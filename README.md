@@ -100,14 +100,19 @@ To open your console:
 
 You should now see "Hello, World!" printed in your browser console.
 
+![alt text](tutorial-images/consolelog.png)
 
 ### Using the console
 
-We'll use the console here to print output 
+The console is invaluable when debugging an application. In practice, the console can tell your all sorts of things:
 
-To view the console you'll need to open developer tools in your browser.
+- If your CSS isn't working, it can identify that the resource can't be found (i.e. there is no stylesheet located where you've written in your `<link href="">` attribute).
 
-In practice, the console is invaluable when debugging an application.
+- If your scripts aren't working, it will identify why and the line in your code that isn't working (e.g. a syntax error if you've mistyped a variable name or added a character where you shouldn't have).
+
+- In larger applications, it may display HTTP errors if a resource your site has requested doesn't exist (404) or if you don't have access (403).
+
+- When returning data from an API, you can log the response from the API to figure out the data structure of the response, which really helps when you have poorly documented APIs.
 
 ```
 console.log("Hello, World")
