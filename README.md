@@ -3,13 +3,15 @@
 ## Goals
 1. Understand the basics of JavaScript.
 2. Write a series of basic programs using for loops, conditionals and functions.
-3. Manipulate HTML elements with JavaScript.
+
 
 ***
 
 ## Background
 
 Though it's possible to build perfectly acceptable webpages without JavaScript, JavaScript is fundamental when you want to add any interactivty to a page. Though you can build perfectly servicable apps using only HTML, CSS and whatever you use for the server (Python, Node.js, PHP, Ruby, etc), JavaScript is the only way to add functionality on the client side.
+
+We're going to cover the basics of programming in this session. Once you've learned everything here there's a huge amount you'll be able to do when you begin to piece things together. That said, given there's so much to cover, we won't cover anything about manipulating anything in the DOM until next time.
 
 ***
 
@@ -114,11 +116,7 @@ The console is invaluable when debugging an application. In practice, the consol
 
 - When returning data from an API, you can log the response from the API to figure out the data structure of the response, which really helps when you have poorly documented APIs.
 
-```
-console.log("Hello, World")
-```
-
-Throughout this session, if you want to see the output of anything you'll need to log it to the console.
+Throughout this session, if you want to see the output of anything you'll need to log it to the console using `console.log()`.
 
 ```
 var x = 1
@@ -128,9 +126,10 @@ console.log(x)
 You should see a 1 printed in the console.
 
 
-### Variables
 
-Until recently in JavaScript it was only possible to declare variables using the keyword `var`.
+### Variable declarations
+
+Until recently in JavaScript it was only possible to declare variables using the keyword `var`. As of 2015, JavaScript now includes `let` and `const` variable declarations.
 
 
 #### `var`
@@ -147,12 +146,13 @@ x = 10
 console.log(x)
 ```
 
-In some languages, e.g. Python, you don't need to add the `var` at all.
 
 
 #### `let`
 
 May or may not be reassigned.
+
+
 
 `let`
 
@@ -218,9 +218,9 @@ To make your life easier - and for the sake of anyone else reading your code - y
 ```
 var x = "hello@world.com"
 
-var y = 2020
+var thingy = 2020
 
-var z = true
+var anotherVariable = true
 ```
 
 ##### Do
@@ -230,10 +230,12 @@ var email = "hello@world.com"
 
 var current_year = 2020
 
-var condition = true
+var light_on = true
 ```
 
-Variable names should be lowercase or uppercase characters and should not contain spaces.
+I've worked on applications in the past where this advice hasn't been followed and it's near impossible to discern what's going on.
+
+Variable names should be lowercase or uppercase characters and should not contain spaces; your code will not run and will return a `SyntaxError`.
 
 ##### Don't
 
@@ -251,7 +253,7 @@ var five
 var my_variable
 ```
 
-One last point on naming conventions. There are two prevalent conventions for naming variables, objects and functions within Javascript; snake case and camel case. In snake case, each word is separated by an underscore whereas in camel case the name begins with lowercase and each new word begins with a capital. For example:
+One last point on naming conventions. There are two prevalent conventions for naming variables, objects and functions within Javascript; `snake_case` and `camelCase`. In `snake_case`, each word is separated by an underscore whereas in `camelCase` the name begins with lowercase and each new word begins with a capital. For example:
 
 #### Snake case
 
@@ -273,23 +275,36 @@ var valueAddedTaxRate
 let numberOfLoopIterations
 ```
 
+You might also see `PascalCase` (each word separated by capital letter) and `kebab-case` (each word separated by hyphens). You'll see `PascalCase` where classes are declared or where naming React components (e.g. `ModalWindow.js`). You're likely to see `kebab-case` on Node applications (e.g. `auth-route.js`).
+
 Generally speaking, camel case is more easily readable for programmers whose first language is not English, which may explain why it's more common in languages such as Ruby which was created by a Japanese developer.
 
 
 ### Arrays
 
-Another type of data structure is called an array. Arrays are essentially lists of items.
+The first type of data structure we'll learn about is called an array. You can think of arrays as lists of items.
 
 Arrays are declared in JavaScript with square brackets and each item is separated by a comma.
 
 ```
 var numbers_array = [1, 2, 3, 4, 5]
+
+var strings_array = ["hello", "world"]
 ```
 
-Unlike other languages, it's possible to declare arrays containing different data types in the same array. In fact, you can add pretty much anything to an array in JavaScript.
+It's also possible to declare arrays containing different data types in the same array. In fact, you can add pretty much anything to an array in JavaScript.
 
 ```
 var mixed_data_array = ["Hello", true, 100, "World!"]
+```
+
+Arrays can also contain variables.
+
+```
+var a = 5
+var b = 10
+
+var array_of_variables = [a, b]
 ```
 
 And of course, you can create arrays of arrays. Arrays of arrays often called a _multidimensional arrays_ but you may also hear them referred to as _nested_.
@@ -298,16 +313,54 @@ And of course, you can create arrays of arrays. Arrays of arrays often called a 
 var matrix = [[0,0,0],[0,1,0],[1,0,1]]
 ```
 
-To identify an item in an array, you need to know it's index. This refers to its position in the array and is zero-indexed. What that means is that the first item in an array is at zero index, the second is at first index, and so on.
+For now, we only need to know a few operations that you can perform on an array.
+
+#### Get length of an array
+
+To get the length of an array you'll use `arrayName.length`. This will come in handy when you need to iterate over an array (i.e. you need to check each item in an array).
 
 Try the following:
 
+```
+var fruits = ["orange", "apple", "mango"]
+
+console.log(fruits.length)
+
+```
+
+You should see `3` printed in the console.
+
+#### Accessing arrays
+
+To access an item in an array, you need to know it's index. This refers to its position in the array and is zero-indexed. What that means is that the first item in an array is at zero index, the second is at first index, and so on.
+
+Try the following:
+
+```
+var array = ["one", "two", "three"]
+
+console.log[0]
+
+console.log[1]
+
+console.log[2]
+```
+
+In the console you should see `one`, `two`, `three` printed on new lines.
+
+#### Push to array
+
+
+
+#### Pop from array
 
 
 
 
 
-For now, we only need to know a few operations that you can perform on an array.
+
+
+
 
 
 Though I mentioned earlier that it's not possible to reassign a constant, you can add still add items to a constant array.
@@ -316,15 +369,47 @@ Though I mentioned earlier that it's not possible to reassign a constant, you ca
 
 
 
-For loops
+### For loops
 
-Functions
+You can also use the `forEach` method of an array to iterate each item in an array.
 
-Arrow functions
+### Functions
 
-Conditionals
+Functions are one of the fundamental building blocks of programming.
 
-Objects
+A function in JavaScript is written as follows:
+
+
+Let's write a simple function to check whether a number is even or odd.
+
+A function needs to be called to do anything.
+
+```
+
+
+```
+
+
+
+
+
+#### Anonymous functions
+
+
+
+#### Arrow functions
+
+Similar to lambda functions
+Assigning a function to a variable
+
+#### Immediately invoked functions
+
+Though I mentioned earlier a function needs to be called in order to do anything, it is possible to create a function that calls itself as soon as the page loads.
+
+
+### Conditionals
+
+### Objects
 
 
 
@@ -332,6 +417,7 @@ Objects
 
 ## Stretch goals
 
+1. Write a function that checks whether a number is 
 
 
 
